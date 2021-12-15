@@ -1,0 +1,153 @@
+// theme-color
+
+$white:                         #fff !default;
+$black:                         #000 !default;
+
+$primary:                       #0a58ca !default;
+$secondary:                     #264386 !default;
+$success:                       #00bc8c !default;
+$info:                          #03a9f4 !default;
+$warning:                       #dbab62 !default;
+$danger:                        #812828 !default;
+$dark:                          #0b183a !default;
+$light:                         #adb5bd !default;
+
+// body
+
+$body-bg:                       #162654 !default;
+$body-color:                    #fff !default;
+
+// font
+
+$font-size-base:                .85rem !default;
+$font-family-sans-serif:        Poppins;
+
+// headings
+
+$headings-margin-bottom:        0 !default;
+
+// components
+
+$border-color:                  $secondary !default;
+
+// input
+
+$input-btn-focus-width:         0 !default;
+$input-btn-focus-box-shadow:    none !default;
+
+$input-btn-border-width:        0 !default;
+
+// button
+
+$btn-border-width:              0 !default;
+$btn-disabled-opacity:          .5 !default;
+
+$btn-hover-bg-shade-amount:     35% !default;
+$btn-hover-bg-tint-amount:      35% !default;
+
+$btn-active-bg-shade-amount:    50% !default;
+$btn-active-bg-tint-amount:     50% !default;
+
+// progress
+
+$progress-bar-transition:       width .1s ease !default;
+
+// navs
+
+$nav-tabs-border-width:         0 !default;
+
+$nav-tabs-link-active-color:    $black !default;
+$nav-tabs-link-active-bg:       $primary !default;
+
+// modal
+
+$modal-inner-padding:           .5rem !default;
+
+$modal-content-bg:              $secondary !default;
+$modal-content-color:           $white !default;
+$modal-content-border-color:    $dark !default;
+
+$modal-backdrop-opacity:        .75 !default;
+
+@import "~bootstrap/scss/bootstrap";
+
+////////////////////////////////////////////////////////////////////////////////
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.fadein {        
+    -webkit-animation: fadein 1s;
+    -moz-animation: fadein 1s;
+    -o-animation: fadein 1s;
+    animation: fadein 1s;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+@keyframes flicker {
+  0%   { opacity: .9; }
+  50%  { opacity: .1; }
+  100% { opacity: .9; }
+}
+@-o-keyframes flicker{
+  0%   { opacity: .9; }
+  50%  { opacity: .1; }
+  100% { opacity: .9; }
+}
+@-moz-keyframes flicker{
+  0%   { opacity: .9; }
+  50%  { opacity: .1; }
+  100% { opacity: .9; }
+}
+@-webkit-keyframes flicker{
+  0%   { opacity: .9; }
+  50%  { opacity: .1; }
+  100% { opacity: .9; }
+}
+
+.flicker {
+   -webkit-animation: flicker 2s infinite;
+   -moz-animation: flicker 2s infinite;
+   -o-animation: flicker 2s infinite;
+    animation: flicker 2s infinite;
+}    
+
+////////////////////////////////////////////////////////////////////////////////
+
+* { -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+
+html, body, #__nuxt { width:100%; height:100%; overflow:hidden; }
+
+body { background-image: url('~assets/img/bk.jpg'); background-size: cover; }
+
+#__layout { width:100%; height:100%; overflow:hidden; display: flex; align-items: center; justify-content: center; }
+
+#wrapper { width: 100%; height: 100%; max-width: 768px; max-height: 698px; margin: auto auto; }
+
+.text-muted { color: inherit!important; opacity: .75!important; }
+
+.nav-tabs .nav-link { background: $secondary; border-radius: .25rem; }
+
+.tab-content > .active { display: flex; }
+
+.bg-dark { --bs-bg-opacity: .9; }
+.bg-secondary { --bs-bg-opacity: .9; }
+.bg-transparent { background: transparent !important; }
+
+.btn-primary:hover { color: #fff; background-color: #192c57; border-color: #1e366b; }
+.btn-secondary:active, .btn-secondary.active { color: $white; background-color: $primary; }
