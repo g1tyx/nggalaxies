@@ -49,7 +49,7 @@ export default {
     'aboutModal_text3': 'Thank you to all testers and bug reporters: game is better thank to you!',
     
     'welcome_title1': 'Welcome Commander',
-    'welcome_text1': 'Since the great Exodus of Humans to distant horizons, galaxies of our Universe have been left to abandon. Those who stayed have developped and are called the "Bone Hunters" now. They propagate and colonize new galaxies every day.',
+    'welcome_text1': 'Since the great Exodus of Humans to distant horizons, galaxies of our Universe have been left to abandon. Those who stayed have developed and are called the "Bone Hunters" now. They propagate and colonize new galaxies every day.',
     'welcome_text2': 'As Commander, you must prepare for the return of Humanity by cleaning as many galaxies as possible. To do it, you will build ships to destroy "Bone Hunter" fleets.',
     'welcome_text3': 'We trust in your victory. Good luck Commander!',
     

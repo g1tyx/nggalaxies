@@ -93,7 +93,8 @@
                 
                 galaxySetEndTime: 'galaxy/setEndTime',
                 galaxySetCreditCount: 'galaxy/setCreditCount',
-                galaxySetTotalDamages: 'galaxy/setTotalDamages',
+                galaxySetTotalDamagesAll: 'galaxy/setTotalDamagesAll',
+                galaxySetTotalDamagesCurrent: 'galaxy/setTotalDamagesCurrent',
                 galaxySetCurrentFleetId: 'galaxy/setCurrentFleetId',
                 
                 fleetSetLife: 'fleet/setLife',
@@ -145,7 +146,8 @@
                     this.fleetSetLife({ fleetId:this.currentFleet.id, value:this.currentFleet.life.current - realDamages })
                     
                     this.galaxySetCreditCount({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.creditCount + realDamages })
-                    this.galaxySetTotalDamages({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.totalDamages.current + realDamages })
+                    this.galaxySetTotalDamagesAll({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.totalDamages.all + realDamages })
+                    this.galaxySetTotalDamagesCurrent({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.totalDamages.current + realDamages })
                     
                     if (this.currentFleet.life.current <= 0) {
                     

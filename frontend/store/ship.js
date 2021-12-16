@@ -72,7 +72,7 @@ export const mutations = {
         ships.forEach(ship => {
             
             ship.count = 0
-            ship.damage.current = ship.damage.base
+            ship.damage.modifier = 1.0
         })
     },
     

@@ -241,7 +241,7 @@
                                                         </div>
                                                         
                                                         <div class="col-auto">
-                                                            <span class="text-success">+{{ currentGalaxy.darkmatterCoeff * 100 }}%</span>
+                                                            <span class="text-success">+{{ (currentGalaxy.darkmatterCoeff * 100).toFixed(1) }}%</span>
                                                         </div>
                                                         
                                                     </div>
@@ -606,11 +606,13 @@
                 
                 galaxyReset: 'galaxy/reset',
                 galaxyPrestige: 'galaxy/prestige',
+                galaxySetEndTime: 'galaxy/setEndTime',
                 galaxySetStartTime: 'galaxy/setStartTime',
                 galaxySetBuildAmount: 'galaxy/setBuildAmount',
                 galaxySetCreditCount: 'galaxy/setCreditCount',
                 galaxySetLastSaveDate: 'galaxy/setLastSaveDate',
-                galaxySetTotalDamages: 'galaxy/setTotalDamages',
+                galaxySetTotalDamagesAll: 'galaxy/setTotalDamagesAll',
+                galaxySetTotalDamagesCurrent: 'galaxy/setTotalDamagesCurrent',
                 galaxySetCurrentFleetId: 'galaxy/setCurrentFleetId',
                 galaxyApplyModifier: 'galaxy/applyModifier',
                 
@@ -704,7 +706,7 @@
                 this.frameDelta += timestamp - this.lastFrameTimeMs
                 if (this.frameDelta < 1000) return
                 
-                let shots = this.frameDelta / 1000
+                let shots = (this.frameDelta / 1000)
                 
                 let damages = 0
                 this.ships.forEach(ship => {
@@ -721,8 +723,9 @@
                     
                     this.currentFleetLife -= realDamages
                     
-                    this.galaxySetTotalDamages({ galaxyId:this.currentGalaxyId, value:(this.currentGalaxy.totalDamages.current + realDamages) })
                     this.galaxySetCreditCount({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.creditCount + realDamages })
+                    this.galaxySetTotalDamagesAll({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.totalDamages.all + realDamages })
+                    this.galaxySetTotalDamagesCurrent({ galaxyId:this.currentGalaxyId, value:(this.currentGalaxy.totalDamages.current + realDamages) })
                     
                     if (this.currentFleetLife <= 0) {
                         
@@ -746,7 +749,8 @@
                 this.currentFleetLife -= 1
                 
                 this.galaxySetCreditCount({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.creditCount + 1 })
-                this.galaxySetTotalDamages({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.totalDamages.current + 1 })
+                this.galaxySetTotalDamagesAll({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.totalDamages.all + 1 })
+                this.galaxySetTotalDamagesCurrent({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.totalDamages.current + 1 })
                 
                 if (this.currentFleetLife <= 0) {
                     
@@ -775,9 +779,9 @@
                 this.boostReset({ galaxyId:this.currentGalaxyId })
                 this.objectiveReset({ galaxyId:this.currentGalaxyId })
                 
-                this.save()
+                this.currentFleetLife = this.fleetById(this.currentGalaxy.currentFleetId).life.current
                 
-                if (this.currentFleet) this.currentFleetLife = this.currentFleet.life.current
+                this.save()                
             },
             
             onClaim() {

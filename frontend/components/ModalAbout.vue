@@ -61,14 +61,19 @@
                         
                         <div class="col">
                             <div class="p-1">
-                                <span>{{ $t('aboutModal_title1') }} - v0.1.0 - 15-12-2021</span>
+                                <span>{{ $t('aboutModal_title1') }} - v0.1.1 - 16-12-2021</span>
                             </div>
                         </div>                        
                         
                         <div class="col">
                             <div class="p-1">
                                 <ul class="mb-0 text-light small">
-                                    <li>NEW: Initial version</li>
+                                    <li>CHANGE: formula to gain darkmatter (hard reset is mandatory)</li>
+                                    <li>FIX: welcome popup typo</li>
+                                    <li>FIX: galaxy end time setting</li>
+                                    <li>FIX: bone hunter fleet life on galaxy resetting</li>
+                                    <li>FIX: ship damage modifier resetting</li>
+                                    <li>FIX: big number displaying</li>
                                 </ul>
                             </div>
                         </div>
