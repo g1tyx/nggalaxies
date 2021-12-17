@@ -25,15 +25,15 @@
                 </div>
                 
                 <div class="col-auto">
-                    <button type="button" class="btn btn-primary py-1" :class="{ 'disabled':upgrade.canBuy == false }" style="width:85px;" @click="onBuy()">
+                    <button type="button" class="btn btn-primary py-1" :class="{ 'disabled':upgrade.canBuy == false }" :disabled="upgrade.canBuy == false" style="width:85px;" @click="onBuy()">
                         
                         <div>
-                            <span class="text-muted">{{ $t('btnName_buy')}}</span>
+                            <span>{{ $t('btnName_buy')}}</span>
                         </div>
                         
                         <div class="d-flex align-items-center justify-content-center small">
-                            <img src="~/assets/img/credit.png" width="10" height="10" />
-                            <FormatNumber :value="upgrade.cost" class="ms-1" />
+                            <img src="~/assets/img/credit.png" width="10" height="10" alt="Credit" />
+                            <FormatNumber :value="upgrade.cost" class="ms-1 text-muted" />
                         </div>
                         
                     </button>

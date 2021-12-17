@@ -6,7 +6,7 @@
                 <div class="col-auto dropend">
                 
                     <div class="btn btn-dark p-1 d-flex align-items-center justify-content-center position-relative" style="width:50px; height:45px;" data-bs-toggle="dropdown" aria-expanded="false">                        
-                        <img :src="require(`~/assets/img/${ship.id}.png`)" width="24" height="24" />
+                        <img :src="require(`~/assets/img/${ship.id}.png`)" width="24" height="24" :alt="$t('shipName_' + ship.id)" />
                         <div class="position-absolute top-0 start-0 px-1 small text-light"><i class="fas fa-fw fa-eye text-muted small"></i></div>
                     </div>
                     
@@ -55,7 +55,7 @@
                         <div class="row g-1">
                         
                             <div class="col d-flex align-items-center">
-                                <img src="~/assets/img/damage.png" width="12" height="12" />
+                                <img src="~/assets/img/damage.png" width="12" height="12" alt="Damage" />
                                 <FormatNumber :value="damage" class="ms-1 text-warning" />
                                 <small class="ms-1 text-warning">/{{ $t('sec') }}</small>
                             </div>
@@ -67,15 +67,15 @@
                 </div>
                 
                 <div class="col-auto">
-                    <button type="button" class="btn btn-primary px-0 py-1" :class="{ 'disabled':canBuild == false }" style="width:85px;" @click="onBuild(buildCount, cost)">
+                    <button type="button" class="btn btn-primary px-0 py-1" :class="{ 'disabled':canBuild == false }" :disabled="canBuild == false" style="width:85px;" @click="onBuild(buildCount, cost)">
                         
                         <div>
-                            <span class="text-muted">{{ $t('btnName_build')}} +{{ buildCount.toLocaleString() }}</span>
+                            <span>{{ $t('btnName_build')}} +{{ buildCount.toLocaleString() }}</span>
                         </div>
                         
                         <div class="d-flex align-items-baseline justify-content-center">
-                            <img src="~/assets/img/credit.png" width="10" height="10" />
-                            <FormatNumber :value="cost" class="ms-1 small" />
+                            <img src="~/assets/img/credit.png" width="10" height="10" alt="Credit" />
+                            <FormatNumber :value="cost" class="ms-1 small text-muted" />
                         </div>
                         
                     </button>

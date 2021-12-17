@@ -9,7 +9,7 @@
                     
                         <div class="col-auto dropdown">
                         
-                            <button type="button" class="btn btn-secondary" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu">
                                 <i class="fas fa-fw fa-bars"></i>
                             </button>
                             
@@ -53,7 +53,7 @@
                             <div class="row flex-column gx-0 gy-1 dropdown">
                             
                                 <button type="button" class="w-100 btn btn-secondary d-flex align-items-center justify-content-center" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img :src="require(`~/assets/img/${currentGalaxy.id}.png`)" width="16" height="16" />
+                                    <img :src="require(`~/assets/img/${currentGalaxy.id}.png`)" width="16" height="16" alt="Galaxy Icon" />
                                     <span class="ms-1">{{ $t('galaxyName_' + currentGalaxy.id) }}</span>
                                     <span class="ms-2 badge bg-danger fw-normal">BETA Testing</span>
                                 </button>
@@ -98,7 +98,7 @@
                     <div class="p-1 row g-1 align-items-center">
                     
                         <div class="col-12 text-center">                        
-                            <button type="button" class="btn p-0" @click="onManualFire()">
+                            <button type="button" class="btn p-0" @click="onManualFire()" aria-label="Manual Fire">
                                 <img :src="require(`~/assets/img/${currentGalaxy.id}.png`)" width="25%" />
                             </button>
                         </div>
@@ -171,13 +171,13 @@
                         <BoxCreditCount :value="currentGalaxy.creditCount" />
                         
                         <div class="col-4 d-flex align-items-baseline justify-content-center">
-                            <img src="~/assets/img/damage.png" width="12" height="12" />
+                            <img src="~/assets/img/damage.png" width="12" height="12" alt="Total Damage Per Second" />
                             <FormatNumber :value="totalDps" class="ms-1" />
                             <small class="ms-1 text-light">/{{ $t('sec') }}</small>
                         </div>
                         
                         <div class="col-4 d-flex align-items-baseline justify-content-center">
-                            <img src="~/assets/img/darkmatter.png" width="12" height="12" />
+                            <img src="~/assets/img/darkmatter.png" width="12" height="12" alt="Dark Matter" />
                             <FormatNumber :value="currentGalaxy.darkmatterCount" class="ms-1" />
                             <small class="ms-1 text-light">(<FormatNumber :value="potentialDarkmatter" />)</small>
                         </div>
@@ -267,7 +267,7 @@
                                             
                                             <div class="col">
                                                 <div class="p-1 text-end">
-                                                    <button type="button" class="btn btn-primary"  @click="onPrestige()">
+                                                    <button type="button" class="btn btn-primary" :class="{ 'disabled':potentialDarkmatter < 1 }" :disabled="potentialDarkmatter < 1" @click="onPrestige()">
                                                         <span class="h6">{{ $t('btnName_prestige') }}</span>
                                                     </button>
                                                 </div>
@@ -304,7 +304,7 @@
                                         </div>
                                         
                                         <div class="col-auto">
-                                            <button type="button" class="btn btn-primary py-2" :class="{ 'disabled':boostsToBuy <= 0 }" style="width:85px;" @click="onBuyAllBoosts()">
+                                            <button type="button" class="btn btn-primary py-2" :class="{ 'disabled':boostsToBuy <= 0 }" :disabled="boostsToBuy <= 0" style="width:85px;" @click="onBuyAllBoosts()">
                                                 <span>{{ $t('btnName_buyAll') }}</span>
                                             </button>
                                         </div>
@@ -345,7 +345,7 @@
                                         </div>
                                         
                                         <div class="col-auto">
-                                            <button type="button" class="btn btn-primary py-2" :class="{ 'disabled':upgradesToBuy <= 0 }" style="width:85px;" @click="onBuyAllUpgrades()">
+                                            <button type="button" class="btn btn-primary py-2" :class="{ 'disabled':upgradesToBuy <= 0 }" :disabled="upgradesToBuy <= 0" style="width:85px;" @click="onBuyAllUpgrades()">
                                                 <span>{{ $t('btnName_buyAll') }}</span>
                                             </button>
                                         </div>
@@ -373,17 +373,17 @@
                                                 <div class="row gy-1 gx-2 align-items-center">
                                                 
                                                     <div class="col">
-                                                        <div>Objective</div>
+                                                        <div>{{ $t('objective_title1') }}</div>
                                                         <small class="text-light"><span class="text-white">{{ currentObjective.threshold.toLocaleString() }}</span> units of each ship</small>
                                                     </div>
                                                     
                                                     <div class="col">
-                                                        <div>Reward</div>
-                                                        <small class="text-light">Ship damages <span class="text-white">x{{ currentObjective.modifier.coeff }}</span></small>
+                                                        <div>{{ $t('objective_title2') }}</div>
+                                                        <small class="text-light">{{ $t('shipDamage') }} <span class="text-white">x{{ currentObjective.modifier.coeff }}</span></small>
                                                     </div>
                                                     
                                                     <div class="col-auto">
-                                                        <button type="button" class="w-100 btn btn-primary" :class="{ 'disabled':canClaim == false }" @click="onClaim()">
+                                                        <button type="button" class="w-100 btn btn-primary" :class="{ 'disabled':canClaim == false }" :disabled="canClaim == false" @click="onClaim()">
                                                             <span>{{ $t('btnName_claim') }}</span>
                                                         </button>
                                                     </div>

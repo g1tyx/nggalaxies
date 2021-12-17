@@ -1,6 +1,10 @@
 export default {
-
+    
+    // Disable server-side rendering
     ssr: false,
+
+    // Target
+    target: 'static',
 
     // Global page headers
     head: {
@@ -35,7 +39,13 @@ export default {
 
     // Modules for dev and build
     buildModules: [
+        '@nuxtjs/google-analytics',
     ],
+
+    // Google Analytics module configuration
+    googleAnalytics: {
+        id:'G-Q1C1RTM5F4',
+    },
 
     // Modules
     modules: [

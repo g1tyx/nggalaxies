@@ -5,9 +5,9 @@
             
                 <div class="col-auto">
                     <div class="bg-dark p-1 rounded-1 d-flex align-items-center justify-content-center" style="width:50px; height:40px;">
-                        <img v-if="boost.modifier.type == 'darkmatter'" src="~/assets/img/darkmatter.png" width="24" height="24" />
+                        <img v-if="boost.modifier.type == 'darkmatter'" src="~/assets/img/darkmatter.png" width="24" height="24" alt="Dark Matter" />
                         <img v-if="boost.modifier.type != 'darkmatter' && boost.modifier.shipIds.length == 1" :src="require(`~/assets/img/${boost.modifier.shipIds[0]}.png`)" width="24" height="24" />
-                        <img v-if="boost.modifier.type != 'darkmatter' && boost.modifier.shipIds.length > 1" src="~/assets/img/shipAll.png" width="24" height="24" />
+                        <img v-if="boost.modifier.type != 'darkmatter' && boost.modifier.shipIds.length > 1" src="~/assets/img/shipAll.png" width="24" height="24" alt="All Ships" />
                     </div>
                 </div>
                 
@@ -26,15 +26,15 @@
                 </div>
                 
                 <div class="col-auto">
-                    <button type="button" class="btn btn-primary py-1" :class="{ 'disabled':canBuy == false }" style="width:85px;" @click="onBuy()">
+                    <button type="button" class="btn btn-primary py-1" :class="{ 'disabled':boost.canBuy == false }" :disabled="boost.canBuy == false" style="width:85px;" @click="onBuy()">
                         
                         <div>
-                            <span class="text-muted">{{ $t('btnName_buy')}}</span>
+                            <span>{{ $t('btnName_buy')}}</span>
                         </div>
                         
                         <div class="d-flex align-items-center justify-content-center small">
-                            <img src="~/assets/img/darkmatter.png" width="10" height="10" />
-                            <FormatNumber :value="boost.cost" class="ms-1" />
+                            <img src="~/assets/img/darkmatter.png" width="10" height="10" alt="Credit" />
+                            <FormatNumber :value="boost.cost" class="ms-1 text-muted" />
                         </div>
                         
                     </button>
@@ -52,13 +52,6 @@
     
         props:[ 'boost' ],
         
-        data() {
-            return {
-            
-                canBuy: true,
-            }
-        },
-        
         computed: {
             ...mapGetters({
             
@@ -68,15 +61,6 @@
             }),
             
             currentGalaxyDarkmatterCount: function() { return this.galaxyById(this.currentGalaxyId).darkmatterCount },        
-        },
-        
-        watch: {
-        
-            currentGalaxyDarkmatterCount: function(val) {
-            
-                let temp = this.boost.cost <= this.currentGalaxyDarkmatterCount
-                if (temp != this.canBuy) this.canBuy = temp
-            },
         },
         
         methods: {
@@ -98,11 +82,6 @@
                 if (this.boost.modifier.type == 'darkmatter') this.galaxyApplyModifier(this.boost.modifier)
                 else this.shipApplyModifier(this.boost.modifier)
             },
-        },
-        
-        created() {
-        
-            this.canBuy = this.boost.cost <= this.currentGalaxyDarkmatterCount
         },
     }
 </script>

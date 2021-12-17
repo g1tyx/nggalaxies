@@ -6,6 +6,7 @@ export default {
     'boneHunterFleet': 'Bone Hunter Fleet',
     'upgradePurchased': 'Purchased Upgrades',
     'boostPurchased': 'Purchased Boosts',
+    'shipDamage': 'Ship Damage',
     
     'screenLoading_text': 'Loading...',
     
@@ -55,24 +56,26 @@ export default {
     
     'offline_title1': 'Welcome back Commander',
     'offline_text1': 'You were offline for',
-    'offline_text2': 'Your ships performed damages on',
+    'offline_text2': 'Your ships performed damage on',
 
-    'prestigeBox_text1': 'Antimatter increase ship damages: the more Antimatter you have, the more damages ships perform. By prestiging, you will gain Antimater but you will lost all your current ships, upgrades and boosts.',
+    'prestigeBox_text1': 'Antimatter increase ship damage: the more Antimatter you have, the more damage ships perform. By prestiging, you will gain Antimater but you will lost all your current ships, upgrades and boosts.',
     'prestigeBox_title1': 'Your Total Antimatter',
     'prestigeBox_title2': 'Damage Bonus per Antimatter',
     'prestigeBox_title3': 'Antimatter gained by prestiging',
     
     'successBar_title': 'Congratulations!',
-    'successBar_text1': 'is free thank to you Commander',
-    'successBar_text2': 'You free the galaxy in',
+    'successBar_text1': 'is free thanks to you Commander',
+    'successBar_text2': 'You freed the galaxy in',
     'successBar_text3': 'If you want to start again to improve your time, please Reset',
+
+    'objective_title1': 'Objective',
+    'objective_title2': 'Reward',
 
     'shipName_shipAll': 'All ships',
     
-    'modifierType_count': 'count',
-    'modifierType_speed': 'fire cadency',
-    'modifierType_damage': 'damages',
-    'modifierType_darkmatter': 'bonus',
+    'modifierType_count': 'Count',
+    'modifierType_damage': 'Damage',
+    'modifierType_darkmatter': 'Bonus',
     
     'galaxyName_galaxy0': 'NG Galaxy #1',
     'galaxyDesc_galaxy0': 'First galaxy to free. You just have to kill all Bone Hunter fleets.',

@@ -61,19 +61,18 @@
                         
                         <div class="col">
                             <div class="p-1">
-                                <span>{{ $t('aboutModal_title1') }} - v0.1.1 - 16-12-2021</span>
+                                <span>{{ $t('aboutModal_title1') }} - v0.1.2 - 17-12-2021</span>
                             </div>
                         </div>                        
                         
                         <div class="col">
                             <div class="p-1">
                                 <ul class="mb-0 text-light small">
-                                    <li>CHANGE: formula to gain darkmatter (hard reset is mandatory)</li>
-                                    <li>FIX: welcome popup typo</li>
-                                    <li>FIX: galaxy end time setting</li>
-                                    <li>FIX: bone hunter fleet life on galaxy resetting</li>
-                                    <li>FIX: ship damage modifier resetting</li>
-                                    <li>FIX: big number displaying</li>
+                                    <li>CHANGE: add some alt attributes for screen readers</li>
+                                    <li>CHANGE: disabled button displaying</li>
+                                    <li>FIX: success message typo</li>
+                                    <li>FIX: copy/paste exported data on Safari browser</li>
+                                    <li>FIX: keyboard keys on disabled buttons</li>
                                 </ul>
                             </div>
                         </div>
