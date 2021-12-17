@@ -52,15 +52,15 @@ export const actions = {
         let loadedGalaxy = payload.data
         
         commit('setLastSaveDate', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.lastSaveDate })
-        commit('setCreditCount', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.creditCount })
-        commit('setDarkmatterCount', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.darkmatterCount })
-        commit('setDarkmatterSacrified', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.darkmatterSacrified })
-        commit('setBuildAmount', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.buildAmount })
-        commit('setStartTime', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.startTime })
+        commit('setCreditCount', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.creditCount || 0 })
+        commit('setDarkmatterCount', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.darkmatterCount || 0 })
+        commit('setDarkmatterSacrified', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.darkmatterSacrified || 0 })
+        commit('setBuildAmount', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.buildAmount || '+1' })
+        commit('setStartTime', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.startTime || new Date().getTime() })
         commit('setEndTime', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.endTime })
-        commit('setTotalDamagesAll', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.totalDamagesAll })
-        commit('setTotalDamagesCurrent', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.totalDamagesCurrent })
-        commit('setCurrentFleetId', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.currentFleetId })
+        commit('setTotalDamagesAll', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.totalDamagesAll || 0 })
+        commit('setTotalDamagesCurrent', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.totalDamagesCurrent || 0 })
+        commit('setCurrentFleetId', { galaxyId:loadedGalaxy.id, value:loadedGalaxy.currentFleetId || loadedGalaxy.id + 'fleet0' })
     },
 }
 

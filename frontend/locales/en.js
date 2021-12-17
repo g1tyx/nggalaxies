@@ -2,7 +2,7 @@ export default {
     
     'sec': 'sec',
     'time_day': 'd',
-    'antimatter': 'Antimatter',
+    'darkmatter': 'Darkmatter',
     'boneHunterFleet': 'Bone Hunter Fleet',
     'upgradePurchased': 'Purchased Upgrades',
     'boostPurchased': 'Purchased Boosts',
@@ -58,10 +58,10 @@ export default {
     'offline_text1': 'You were offline for',
     'offline_text2': 'Your ships performed damage on',
 
-    'prestigeBox_text1': 'Antimatter increase ship damage: the more Antimatter you have, the more damage ships perform. By prestiging, you will gain Antimater but you will lost all your current ships, upgrades and boosts.',
-    'prestigeBox_title1': 'Your Total Antimatter',
-    'prestigeBox_title2': 'Damage Bonus per Antimatter',
-    'prestigeBox_title3': 'Antimatter gained by prestiging',
+    'prestigeBox_text1': 'Darkmatter increase ship damage: the more Darkmatter you have, the more damage ships perform. By prestiging, you will gain Antimater but you will lost all your current ships, upgrades and boosts.',
+    'prestigeBox_title1': 'Your Total Darkmatter',
+    'prestigeBox_title2': 'Damage Bonus per Darkmatter',
+    'prestigeBox_title3': 'Darkmatter gained by prestiging',
     
     'successBar_title': 'Congratulations!',
     'successBar_text1': 'is free thanks to you Commander',

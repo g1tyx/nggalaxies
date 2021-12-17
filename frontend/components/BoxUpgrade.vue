@@ -12,7 +12,7 @@
                 </div>
                 
                 <div class="col px-2">
-                    <div v-if="upgrade.modifier.type == 'darkmatter'" class="text-light">{{ $t('antimatter') }}</div>
+                    <div v-if="upgrade.modifier.type == 'darkmatter'" class="text-light">{{ $t('darkmatter') }}</div>
                     <div v-if="upgrade.modifier.type != 'darkmatter' && upgrade.modifier.shipIds.length == 1" class="text-light">{{ $t('shipName_' + upgrade.modifier.shipIds[0]) }}</div>
                     <div v-if="upgrade.modifier.type != 'darkmatter' && upgrade.modifier.shipIds.length > 1" class="text-light">{{ $t('shipName_shipAll') }}</div>
                     <div class="text-light small">{{ $t('modifierType_' + upgrade.modifier.type) }}</div>

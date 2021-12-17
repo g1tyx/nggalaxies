@@ -61,18 +61,15 @@
                         
                         <div class="col">
                             <div class="p-1">
-                                <span>{{ $t('aboutModal_title1') }} - v0.1.2 - 17-12-2021</span>
+                                <span>{{ $t('aboutModal_title1') }} - v0.1.3 - 17-12-2021</span>
                             </div>
                         </div>                        
                         
                         <div class="col">
                             <div class="p-1">
                                 <ul class="mb-0 text-light small">
-                                    <li>CHANGE: add some alt attributes for screen readers</li>
-                                    <li>CHANGE: disabled button displaying</li>
-                                    <li>FIX: success message typo</li>
-                                    <li>FIX: copy/paste exported data on Safari browser</li>
-                                    <li>FIX: keyboard keys on disabled buttons</li>
+                                    <li>FIX: rename Antimatter to Darkmatter</li>
+                                    <li>FIX: set initial values of all attributes (retrocompatibility)</li>
                                 </ul>
                             </div>
                         </div>
