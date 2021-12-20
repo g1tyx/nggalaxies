@@ -576,29 +576,9 @@
         
         watch: {
         
-            currentGalaxyCreditCount: function() {
-                
-                this.upgradesToBuy = 0
-                
-                this.upgrades.forEach(upgrade => {
-                
-                    let canBuy = upgrade.cost <= this.currentGalaxyCreditCount
-                    if (canBuy != upgrade.canBuy) this.upgradeSetCanBuy({ upgradeId:upgrade.id, value:canBuy })
-                    if (canBuy == true) this.upgradesToBuy += 1
-                })
-            },
+            currentGalaxyCreditCount: function() { this.checkUpgradesToBuy() },
         
-            currentGalaxyDarkmatterCount: function() {
-            
-                this.boostsToBuy = 0
-                
-                this.boosts.forEach(boost => {
-                
-                    let canBuy = boost.cost <= this.currentGalaxyDarkmatterCount
-                    if (canBuy != boost.canBuy) this.boostSetCanBuy({ boostId:boost.id, value:canBuy })
-                    if (canBuy == true) this.boostsToBuy += 1
-                })
-            },
+            currentGalaxyDarkmatterCount: function() { this.checkBoostsToBuy() },
         },
         
         methods: {
@@ -610,6 +590,7 @@
                 galaxySetStartTime: 'galaxy/setStartTime',
                 galaxySetBuildAmount: 'galaxy/setBuildAmount',
                 galaxySetCreditCount: 'galaxy/setCreditCount',
+                galaxySetDarkmatterCount: 'galaxy/setDarkmatterCount',
                 galaxySetLastSaveDate: 'galaxy/setLastSaveDate',
                 galaxySetTotalDamagesAll: 'galaxy/setTotalDamagesAll',
                 galaxySetTotalDamagesCurrent: 'galaxy/setTotalDamagesCurrent',
@@ -658,7 +639,31 @@
                 let compressed = LZString.compressToBase64(text)
                 localStorage.setItem('nggalaxies', compressed)
             },
-        
+            
+            checkUpgradesToBuy() {
+            
+                this.upgradesToBuy = 0
+                
+                this.upgrades.forEach(upgrade => {
+                
+                    let canBuy = upgrade.cost <= this.currentGalaxyCreditCount
+                    if (canBuy != upgrade.canBuy) this.upgradeSetCanBuy({ upgradeId:upgrade.id, value:canBuy })
+                    if (canBuy == true) this.upgradesToBuy += 1
+                })
+            },
+            
+            checkBoostsToBuy() {
+            
+                this.boostsToBuy = 0
+                
+                this.boosts.forEach(boost => {
+                
+                    let canBuy = boost.cost <= this.currentGalaxyDarkmatterCount
+                    if (canBuy != boost.canBuy) this.boostSetCanBuy({ boostId:boost.id, value:canBuy })
+                    if (canBuy == true) this.boostsToBuy += 1
+                })
+            },
+            
             start() {
                 
                 this.started = true
@@ -847,6 +852,9 @@
             this.upgradesToBuy = 0
             
             if (this.currentFleet) this.currentFleetLife = this.currentFleet.life.current
+            
+            this.checkBoostsToBuy()
+            this.checkUpgradesToBuy()
             
             this.start()
             
