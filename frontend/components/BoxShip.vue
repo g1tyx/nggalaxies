@@ -139,11 +139,34 @@
                 temp = Math.floor(temp)
                 
                 return temp
-            },            
+            },
+            
+            shipCount: function() { return this.ship.count },
         },
         
         watch: {
         
+            shipCount: function(val) {
+            
+                let temp = 1
+                if (this.ship.count > 0) {
+                
+                    let buildAmount = this.currentGalaxy.buildAmount
+                    if (buildAmount == 'next') {
+                        
+                        if (this.currentUnlock) temp = (this.currentUnlock.threshold - this.ship.count)
+                        else temp = 1
+                    }
+                    else if (buildAmount == 'max') {
+                        
+                        let cost = this.ship.cost.base * Math.pow(this.ship.cost.coeff, this.ship.count)
+                        temp = Math.max(1, Math.floor(Math.log(((this.currentGalaxy.creditCount * (this.ship.cost.coeff - 1)) / cost) + 1) / Math.log(this.ship.cost.coeff)))
+                    }
+                }
+                
+                if (temp != this.buildCount) this.buildCount = temp
+            },
+            
             currentGalaxyCreditCount: function(val) {
             
                 let temp = this.cost <= this.currentGalaxyCreditCount

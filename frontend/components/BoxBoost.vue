@@ -20,7 +20,6 @@
                 
                 <div class="col-auto px-2">
                     <span v-if="boost.modifier.type == 'damage'"><small class="text-muted">x</small> {{ boost.modifier.coeff }}</span>
-                    <span v-if="boost.modifier.type == 'speed'"><small class="text-muted">x</small> {{ boost.modifier.coeff }}</span>
                     <span v-if="boost.modifier.type == 'darkmatter'" class="text-success"><small class="text-muted">+</small> {{ boost.modifier.coeff }}%</span>
                     <span v-if="boost.modifier.type == 'count'"><small class="text-muted">+</small> {{ boost.modifier.coeff }}</span>
                 </div>

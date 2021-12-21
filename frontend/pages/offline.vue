@@ -152,7 +152,7 @@
                     if (this.currentFleet.life.current <= 0) {
                     
                         let nextId = this.fleetNextId(this.currentFleet.id)
-                        this.galaxySetCurrentFleetId({ galaxyId:this.currentGalaxyId, fleetId:nextId })                    
+                        this.galaxySetCurrentFleetId({ galaxyId:this.currentGalaxyId, value:nextId })
                     }
                 }
             })            

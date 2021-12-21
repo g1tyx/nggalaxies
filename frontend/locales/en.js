@@ -58,7 +58,7 @@ export default {
     'offline_text1': 'You were offline for',
     'offline_text2': 'Your ships performed damage on',
 
-    'prestigeBox_text1': 'Darkmatter increase ship damage: the more Darkmatter you have, the more damage ships perform. By prestiging, you will gain Antimater but you will lost all your current ships, upgrades and boosts.',
+    'prestigeBox_text1': 'Darkmatter increase ship damage: the more Darkmatter you have, the more damage ships perform. By prestiging, you will gain Darkmatter but you will lose all your current ships, upgrades and boosts.',
     'prestigeBox_title1': 'Your Total Darkmatter',
     'prestigeBox_title2': 'Damage Bonus per Darkmatter',
     'prestigeBox_title3': 'Darkmatter gained by prestiging',

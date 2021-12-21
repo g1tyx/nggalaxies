@@ -61,17 +61,17 @@
                         
                         <div class="col">
                             <div class="p-1">
-                                <span>{{ $t('aboutModal_title1') }} - v0.1.4 - 20-12-2021</span>
+                                <span>{{ $t('aboutModal_title1') }} - v0.1.5 - 21-12-2021</span>
                             </div>
                         </div>                        
                         
                         <div class="col">
                             <div class="p-1">
                                 <ul class="mb-0 text-light small">
-                                    <li>FIX: display all height screen on smartphone and tablets</li>
-                                    <li>FIX: copy/paste in import/export textarea</li>
-                                    <li>FIX: upgrades and boosts to buy on game loading</li>
-                                    <li>FIX: "Buy All" buttons on boosts</li>
+                                    <li>FIX: offline gains when bone hunter fleet is destroyed</li>
+                                    <li>FIX: some typos</li>
+                                    <li>FIX: + count boost loading exploit</li>
+                                    <li>FIX: + count boost don't update ship cost</li>
                                 </ul>
                             </div>
                         </div>
