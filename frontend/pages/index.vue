@@ -31,7 +31,7 @@
                 
                 shipBuiltList: 'ship/builtList',
                 
-                unlockCurrentListByShip: 'unlock/currentListByShip',
+                unlockNotReachedByShipCount: 'unlock/notReachedByShipCount',
                 
                 upgradePurchasedList: 'upgrade/purchasedList',
                 
@@ -65,6 +65,8 @@
                 galaxyApplyModifier: 'galaxy/applyModifier',
                 
                 shipApplyModifier: 'ship/applyModifier',
+                
+                unlockSetReached: 'unlock/setReached',
             }),
             
             async load() {
@@ -93,16 +95,12 @@
                 
                 this.shipBuiltList.forEach(ship => {
                 
-                    let unlocks = this.unlockCurrentListByShip(ship.id)
-                    for (let i = 0; i < unlocks.length; i++) {
+                    let unlocks = this.unlockNotReachedByShipCount(ship.id, ship.count)
+                    unlocks.forEach(unlock => {
                     
-                        let unlock = unlocks[i]
-                        if (ship.count >= unlock.threshold) {
-                            
-                            this.shipApplyModifier(unlock.modifier)
-                        }
-                        else break
-                    }
+                        this.shipApplyModifier(unlock.modifier)
+                        this.unlockSetReached({ unlockId:unlock.id, value:true })
+                    })
                 })
                 
                 this.upgradePurchasedList.forEach(upgrade => {                    
@@ -129,7 +127,9 @@
         },
     
         created() {
-        
+            
+            this.$ga.page(this.$router)
+            
             setTimeout(() => { this.load() }, 1000)
         },
     }

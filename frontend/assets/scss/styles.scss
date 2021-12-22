@@ -8,7 +8,7 @@ $secondary:                     #264386 !default;
 $success:                       #00bc8c !default;
 $info:                          #03a9f4 !default;
 $warning:                       #dbab62 !default;
-$danger:                        #812828 !default;
+$danger:                        #ef5350 !default;
 $dark:                          #0b183a !default;
 $light:                         #adb5bd !default;
 
@@ -138,7 +138,7 @@ body { background-image: url('~assets/img/bk.jpg'); background-size: cover; }
 #__layout { width:100%; height:100%; overflow:hidden; display: flex; align-items: center; justify-content: center; }
 
 #wrapper { width: 100%; height: 100%; margin: auto auto; }
-@media (min-width: 992px) { #wrapper { max-width: 768px; max-height: 698px; } }
+@media (min-width: 992px) { #wrapper { max-width: 768px; max-height: 705px; } }
 
 .text-muted { color: inherit!important; opacity: .75!important; }
 
@@ -154,3 +154,8 @@ body { background-image: url('~assets/img/bk.jpg'); background-size: cover; }
 .btn-primary:disabled, .btn-primary.disabled { color: $light; background-color: $secondary; }
 
 .btn-secondary:active, .btn-secondary.active { color: $white; background-color: $primary; }
+
+////////////////////////////////////////////////////////////////////////////////
+
+.bump:hover { transform: scale(1.1) !important; }
+.bump:active { transform: scale(1) !important; }

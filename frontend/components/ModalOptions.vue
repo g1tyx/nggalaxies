@@ -17,7 +17,13 @@
                                 <span>{{ $t('savedData_title1') }}</span>
                             </div>
                         </div>
-                                
+                        
+                        <div v-if="playfabSessionTicket" class="col">
+                            <div class="p-1">
+                                <small class="text-success">{{ $t('savedData_loggedIn') }}</small>
+                            </div>
+                        </div>
+                        
                         <div class="col">
                             <div class="p-1">
                                 <textarea class="form-control" style="height:100px;" v-model="compressed"></textarea>
@@ -64,6 +70,8 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
+    
     export default {
     
         data() {
@@ -71,6 +79,13 @@
             
                 compressed: null,
             }
+        },
+        
+        computed: {
+            ...mapGetters({
+                
+                playfabSessionTicket: 'playfabSessionTicket',
+            }),
         },
         
         methods: {            

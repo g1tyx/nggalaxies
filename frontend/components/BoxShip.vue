@@ -95,7 +95,7 @@
         
         data() {
             return {
-                              
+                
                 canBuild: false,
                 buildCount: 0,
             }
@@ -112,6 +112,7 @@
                 fleetNextId: 'fleet/nextId',
                 
                 unlockCurrentByShipCount: 'unlock/currentByShipCount',
+                unlockNotReachedByShipCount: 'unlock/notReachedByShipCount',
             }),
             
             currentGalaxy: function() { return this.galaxyById(this.currentGalaxyId) },
@@ -135,7 +136,7 @@
                 for (let n = 1; n < this.buildCount; n++)
                     temp += Math.pow(this.ship.cost.coeff, n)
                     
-                temp *= this.ship.cost.base * Math.pow(this.ship.cost.coeff, this.ship.count)
+                temp *= this.ship.cost.base * Math.pow(this.ship.cost.coeff, (this.ship.count - this.ship.offset))
                 temp = Math.floor(temp)
                 
                 return temp
@@ -165,6 +166,13 @@
                 }
                 
                 if (temp != this.buildCount) this.buildCount = temp
+                
+                let unlocks = this.unlockNotReachedByShipCount(this.ship.id, this.ship.count)
+                unlocks.forEach(unlock => {
+                
+                    this.shipApplyModifier(unlock.modifier)
+                    this.unlockSetReached({ unlockId:unlock.id, value:true })
+                })
             },
             
             currentGalaxyCreditCount: function(val) {
@@ -194,14 +202,6 @@
                 
                 if (temp != this.buildCount) this.buildCount = temp
             },
-            
-            currentUnlock: function(newValue, oldValue) {
-                
-                if (newValue.threshold > oldValue.threshold) {
-                
-                    this.shipApplyModifier(oldValue.modifier)
-                }
-            },
         },
         
         methods: {
@@ -211,6 +211,8 @@
                 
                 shipSetCount: 'ship/setCount',
                 shipApplyModifier: 'ship/applyModifier',
+                
+                unlockSetReached: 'unlock/setReached',
             }),
             
             onBuild(count, cost) {

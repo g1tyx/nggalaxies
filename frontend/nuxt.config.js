@@ -49,10 +49,15 @@ export default {
 
     // Modules
     modules: [
-        '@nuxtjs/pwa',
+        '@nuxtjs/axios',
         '@nuxtjs/i18n',
+        '@nuxtjs/pwa',
     ],
-
+    
+    // axios module configuration
+    axios: {
+    },
+    
     // PWA module configuration
     pwa: {
         manifest: {

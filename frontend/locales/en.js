@@ -1,7 +1,10 @@
 export default {
     
     'sec': 'sec',
+    'tap': 'Tap',
     'time_day': 'd',
+    'loggedIn': 'You are logged in.',
+    'current': 'Current',
     'darkmatter': 'Darkmatter',
     'boneHunterFleet': 'Bone Hunter Fleet',
     'upgradePurchased': 'Purchased Upgrades',
@@ -19,6 +22,7 @@ export default {
     'submenuName_donating': 'Donating',
     'submenuName_options': 'Options',
     'submenuName_about': 'About',
+    'submenuName_user': 'Profile',
     
     'buildAmount_+1': '+1',
     'buildAmount_+10': '+10',
@@ -42,6 +46,7 @@ export default {
     'donatingModal_text2': 'If the experience you are performing is a pleasure, please considering to support the project by making a donation',
     
     'savedData_title1': 'Saved Data',
+    'savedData_loggedIn': 'Cloud saving is enabled.',
     'savedData_text1': 'Copy and paste this onto a file somewhere so that you can import it into the game at a later date. You can also use this to create multiple "savefiles" of the game by storing multiple instances separately.',
     
     'aboutModal_title1': 'Lastest Version',
@@ -67,7 +72,25 @@ export default {
     'successBar_text1': 'is free thanks to you Commander',
     'successBar_text2': 'You freed the galaxy in',
     'successBar_text3': 'If you want to start again to improve your time, please Reset',
-
+    
+    'login_btn': 'Login',
+    'login_text': 'By registering an account and logging in, you will enable cloud saving.',
+    'login_title': 'Login',
+    'login_username': 'Email',
+    'login_password': 'Password',
+    
+    'register_btn': 'Register',
+    'register_title': 'Register',
+    'register_username': 'Email',
+    'register_password': 'Password',
+    'register_success': 'You registered successfully. Now you could login in.',
+    'register_confirmPassword': 'Confirm Password',
+    
+    'error_InvalidParams': 'Invalid params',
+    'error_AccountNotFound': 'Account not found',
+    'error_PasswordsMismatch': 'Passwords mismatch',
+    'error_EmailAddressNotAvailable': 'Email address not available',
+    
     'objective_title1': 'Objective',
     'objective_title2': 'Reward',
 
@@ -90,4 +113,7 @@ export default {
     'shipName_galaxy0shipT7': 'Mothership',
     'shipName_galaxy0shipT8': 'Annihilator',
     'shipName_galaxy0shipT9': 'Obliterator',
+    
+    'galaxyName_galaxy1': 'NG Galaxy #2',
+    'galaxyDesc_galaxy1': 'First event galaxy. This galaxy stay open a specific duration.',
 }

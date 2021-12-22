@@ -2,10 +2,10 @@
     <div v-if="loaded" class="fadein h-100 row flex-column flex-md-row g-0 align-items-stretch">
     
         <div class="col-auto col-md-6 bg-dark d-flex flex-column">
-            <div class="flex-fill row flex-column g-1 justify-content-between">
+            <div class="flex-fill row flex-column gy-1 gx-0 justify-content-between">
             
-                <div class="col-12">
-                    <div class="p-1 row g-1">
+                <div class="col-12 py-1 px-1">
+                    <div class="row g-1">
                     
                         <div class="col-auto dropdown">
                         
@@ -61,22 +61,30 @@
                                 <div class="w-100 dropdown-menu bg-dark border-0 p-0">
                                     <div class="row gx-0 gy-1" style="margin-top:-.125rem!important;">
                                     
-                                        <div class="col-12">
-                                            <button type="button" class="w-100 btn btn-secondary">
-                                                <div class="row g-1 ">
+                                        <div v-for="galaxyId in galaxyIds" :key="galaxyId" class="col-12">
+                                            <button type="button" class="w-100 btn btn-secondary" :class="{ 'border border-primary':galaxyId == currentGalaxy.id }" @click="onChangeGalaxy(galaxyId)">
+                                                <div class="row g-2 ">
                                                 
                                                     <div class="col-auto">
-                                                        <img :src="require(`~/assets/img/${currentGalaxy.id}.png`)" width="32" height="32" />
+                                                        <img :src="require(`~/assets/img/${galaxyId}.png`)" width="24px" height="24px" />
                                                     </div>
                                                     
                                                     <div class="col text-start">
                                                     
-                                                        <div>
-                                                            <span>{{ $t('galaxyName_' + currentGalaxy.id) }}</span>
+                                                        <div class="row">
+                                                            
+                                                            <div class="col">
+                                                                <span>{{ $t('galaxyName_' + galaxyId) }}</span>
+                                                            </div>
+                                                            
+                                                            <div class="col-auto">
+                                                                <span v-if="galaxyId == currentGalaxy.id" class="badge bg-primary fw-normal">{{ $t('current') }}</span>
+                                                            </div>
+                                                            
                                                         </div>
                                                         
                                                         <div class="lh-sm">
-                                                            <small class="text-light">{{ $t('galaxyDesc_' + currentGalaxy.id) }}</small>
+                                                            <small class="text-light">{{ $t('galaxyDesc_' + galaxyId) }}</small>
                                                         </div>
                                                         
                                                     </div>
@@ -91,25 +99,58 @@
                             </div>
                         </div>
                         
-                    </div>
-                </div>
-                
-                <div v-if="currentFleet" class="col-12">
-                    <div class="p-1 row g-1 align-items-center">
-                    
-                        <div class="col-12 text-center">                        
-                            <button type="button" class="btn p-0" @click="onManualFire()" aria-label="Manual Fire">
-                                <img :src="require(`~/assets/img/${currentGalaxy.id}.png`)" width="25%" />
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-secondary position-relative" data-bs-toggle="modal" data-bs-target="#userModal">
+                                <img src="~/assets/img/user.png" width="16" height="16" />
+                                <div v-if="!playfabSessionTicket" class="position-absolute top-0 end-0 small"><i class="fas fa-fw fa-circle text-danger small"></i></div>
                             </button>
                         </div>
                         
-                        <BoxFleetLife :value="currentFleetLife" />
+                    </div>
+                </div>
+                
+                <div v-if="currentFleet" class="col-12 flex-fill py-1 px-1">
+                    <div class="h-100 row g-1 align-items-center">
+                    
+                        <div class="col-12">
+                        
+                            <div class="px-2">
+                                <div class="row g-2 align-items-center">
+                                    
+                                    <div class="col-4 text-end">
+                                        <div v-if="currentGalaxy.totalDamages.current < 4" class="badge bg-secondary fw-normal">
+                                            <span>{{ $t('tap') }}</span>
+                                            <i class="fas fa-fw fa-long-arrow-alt-right"></i>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-4 text-center">
+                                        <button type="button" class="btn p-0 bump" @click="onManualFire()" aria-label="Manual Fire">
+                                            <img :src="require(`~/assets/img/${currentGalaxy.id}.png`)" width="64px" />
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="col-4">
+                                        <div v-if="manualFire" class="badge bg-success fw-normal">
+                                            <div class="d-flex align-items-center lh-1">
+                                                <span class="me-1" style="margin-top:2px;">+<FormatNumber :value="manualDps" /></span>
+                                                <img src="~/assets/img/credit.png" width="12" height="12" alt="Credit" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
                             
+                            <BoxFleetLife :value="currentFleetLife" />
+                            
+                        </div>
+                        
                     </div>                    
                 </div>
                 
-                <div v-if="!currentFleet" class="col-12 flex-fill row g-1 align-items-center">
-                    <div class="p-1 row g-1 align-items-center">
+                <div v-if="!currentFleet" class="col-12 flex-fill py-1 px-1">
+                    <div class="h-100 row g-1 align-items-center">
                     
                         <div class="col-12 text-center text-success">
                            <h3 class="mb-2">{{ $t('successBar_title') }}</h3>
@@ -165,18 +206,18 @@
                     </div>
                 </div>
                 
-                <div class="col-12">
-                    <div class="row g-1 mb-2">
+                <div class="col-12 py-1 px-1">
+                    <div class="row g-1">
                         
                         <BoxCreditCount :value="currentGalaxy.creditCount" />
                         
-                        <div class="col-4 d-flex align-items-baseline justify-content-center">
+                        <div class="col-6 d-flex align-items-baseline justify-content-center">
                             <img src="~/assets/img/damage.png" width="12" height="12" alt="Total Damage Per Second" />
                             <FormatNumber :value="totalDps" class="ms-1" />
                             <small class="ms-1 text-light">/{{ $t('sec') }}</small>
                         </div>
                         
-                        <div class="col-4 d-flex align-items-baseline justify-content-center">
+                        <div class="col-12 d-flex align-items-baseline justify-content-center">
                             <img src="~/assets/img/darkmatter.png" width="12" height="12" alt="Dark Matter" />
                             <FormatNumber :value="currentGalaxy.darkmatterCount" class="ms-1" />
                             <small class="ms-1 text-light">(<FormatNumber :value="potentialDarkmatter" />)</small>
@@ -188,13 +229,13 @@
             </div>
         </div>
         
-        <div class="col col-md-6 p-1 d-flex flex-column bg-dark" style="min-height:1px;">
-            <div class="flex-fill row flex-column g-1">
-                                
+        <div class="col col-md-6 bg-dark d-flex flex-column pt-1" style="min-height:1px;">
+            <div class="flex-fill row flex-column gy-1 gx-0">
+                
                 <div class="col flex-fill d-flex flex-column">
                     <div class="flex-fill tab-content">
                     
-                        <div class="h-100 tab-pane fade" id="prestige" role="tabpanel" aria-labelledby="prestige-tab">
+                        <div class="h-100 px-1 tab-pane fade" id="prestige" role="tabpanel" aria-labelledby="prestige-tab">
                             <div class="flex-fill row flex-column g-1">
                             
                                 <div class="col d-flex flex-column">
@@ -280,7 +321,7 @@
                             </div>
                         </div>
                         
-                        <div class="h-100 tab-pane fade" id="boosts" role="tabpanel" aria-labelledby="boosts-tab">
+                        <div class="h-100 px-1 tab-pane fade" id="boosts" role="tabpanel" aria-labelledby="boosts-tab">
                             <div class="row flex-column g-1">
                             
                                 <div class="col-12">
@@ -321,7 +362,7 @@
                             </div>
                         </div>
                         
-                        <div class="h-100 tab-pane fade" id="upgrades" role="tabpanel" aria-labelledby="upgrades-tab">
+                        <div class="h-100 px-1 tab-pane fade" id="upgrades" role="tabpanel" aria-labelledby="upgrades-tab">
                             <div class="row flex-column g-1">
                                 
                                 <div class="col-12">
@@ -362,11 +403,11 @@
                             </div>
                         </div>
                         
-                        <div class="h-100 tab-pane fade show active" id="ships" role="tabpanel" aria-labelledby="ships-tab">
-                            <div class="row flex-column g-0">
+                        <div class="h-100 px-1 tab-pane fade show active" id="ships" role="tabpanel" aria-labelledby="ships-tab">
+                            <div class="row flex-column g-1">
                                 
-                                <div class="col-12">
-                                    <div class="row g-1 pb-1">
+                                <div v-if="currentObjective" class="col-12">
+                                    <div class="row g-1">
                                     
                                         <div class="col-12">
                                             <div class="bg-secondary rounded-1 p-1 ps-2">
@@ -395,8 +436,8 @@
                                     </div>
                                 </div>
                                 
-                                <div class="col-auto">
-                                    <div class="row g-1 pb-1">
+                                <div class="col-12">
+                                    <div class="row g-1">
                                         
                                         <div class="col">
                                             <button class="w-100 btn btn-sm btn-secondary" :class="{ 'active':currentGalaxy.buildAmount == '+1' }" @click="onChangeBuildAmount('+1')">
@@ -431,7 +472,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="col flex-fill d-flex flex-column" style="overflow-x: hidden; overflow-y: auto; height: 1px;">
+                                <div class="col-12 flex-fill d-flex flex-column" style="overflow-x: hidden; overflow-y: auto; height: 1px;">
                                     <div class="flex-fill row g-1">
                                         <BoxShip v-for="ship in ships" :key="ship.id" :ship="ship" />
                                     </div>
@@ -443,8 +484,8 @@
                     </div>
                 </div>
                 
-                <div class="col-auto">
-                    <ul class="nav nav-tabs row gx-1" role="tablist">
+                <div class="col-auto pb-1 px-1">
+                    <ul class="nav nav-tabs row g-1" role="tablist">
                         
                         <li class="col nav-item" role="presentation">
                             <button class="w-100 btn btn-secondary px-1" id="prestige-tab" data-bs-toggle="tab" data-bs-target="#prestige" type="button" role="tab" aria-controls="prestige" aria-selected="false">
@@ -478,6 +519,7 @@
             </div>
         </div>
         
+        <ModalUser />
         <ModalAbout />
         <ModalOptions />
         <ModalDonating />
@@ -500,6 +542,7 @@
             return {
                 
                 started: false,
+                manualFire: false,
                 saveInterval: null,
                 currentFleetLife: null,
             }
@@ -510,7 +553,9 @@
                 
                 userSaveData: 'saveData',
                 currentGalaxyId: 'currentGalaxyId',
+                playfabSessionTicket: 'playfabSessionTicket',
                 
+                galaxyIds: 'galaxy/galaxyIds',
                 galaxyById: 'galaxy/byId',
                 galaxySaveData: 'galaxy/saveData',
                 galaxyDarkmatterPotential: 'galaxy/darkmatterPotential',
@@ -533,6 +578,8 @@
                 objectiveSaveData: 'objective/saveData',
                 objectiveCurrentListByGalaxy: 'objective/currentListByGalaxy',
             }),
+            
+            loggedIn() { return this.$auth.loggedIn },
             
             currentGalaxy: function() { return this.galaxyById(this.currentGalaxyId) },
             currentGalaxyCreditCount: function() { return this.galaxyById(this.currentGalaxyId).creditCount },
@@ -572,6 +619,11 @@
                 
                 return damages
             },
+            
+            manualDps: function() {
+            
+                return Math.max(1, Math.floor(this.totalDps / 1000))
+            },
         },
         
         watch: {
@@ -583,6 +635,8 @@
         
         methods: {
             ...mapMutations({
+                
+                setCurrentGalaxyId: 'setCurrentGalaxyId',
                 
                 galaxyReset: 'galaxy/reset',
                 galaxyPrestige: 'galaxy/prestige',
@@ -615,7 +669,7 @@
                 objectiveSetCount: 'objective/setCount',
             }),
         
-            save() {
+            async save() {
                 
                 this.galaxySetLastSaveDate({ galaxyId:this.currentGalaxyId, value:new Date().getTime() })
                 
@@ -624,7 +678,9 @@
                 let loadedData = localStorage.getItem('nggalaxies')
                 let text = LZString.decompressFromBase64(loadedData)
                 let localeData = JSON.parse(text)
-            
+                
+                localeData.user = this.userSaveData
+                
                 localeData[this.currentGalaxyId] = {
                     
                     galaxy: this.galaxySaveData(this.currentGalaxyId),
@@ -638,6 +694,23 @@
                 text = JSON.stringify(localeData)
                 let compressed = LZString.compressToBase64(text)
                 localStorage.setItem('nggalaxies', compressed)
+                
+                if (this.playfabSessionTicket) {
+                
+                    try {
+                    
+                        let response = await this.$axios.$post('https://48360.playfabapi.com/Client/UpdateUserData',
+                            { Data:{ 'nggalaxies':compressed } },
+                            { headers: { 'X-Authorization':this.playfabSessionTicket } }
+                        )
+                        
+                        console.log(response)
+                    
+                    } catch(error) {
+                        
+                        console.log(error)
+                    }
+                }
             },
             
             checkUpgradesToBuy() {
@@ -751,11 +824,16 @@
             
                 if (this.currentFleet == null) return
                 
-                this.currentFleetLife -= 1
+                this.manualFire = true
+
+                const self = this
+                setTimeout(function() { self.manualFire = false }, 500)
                 
-                this.galaxySetCreditCount({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.creditCount + 1 })
-                this.galaxySetTotalDamagesAll({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.totalDamages.all + 1 })
-                this.galaxySetTotalDamagesCurrent({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.totalDamages.current + 1 })
+                this.currentFleetLife -= this.manualDps
+                
+                this.galaxySetCreditCount({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.creditCount + this.manualDps })
+                this.galaxySetTotalDamagesAll({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.totalDamages.all + this.manualDps })
+                this.galaxySetTotalDamagesCurrent({ galaxyId:this.currentGalaxyId, value:this.currentGalaxy.totalDamages.current + this.manualDps })
                 
                 if (this.currentFleetLife <= 0) {
                     
@@ -830,6 +908,16 @@
                         else this.shipApplyModifier(boost.modifier)
                     }
                 })
+            },
+            
+            onChangeGalaxy(newGalaxyId) {
+                
+                if (newGalaxyId == this.currentGalaxy.id) return
+                                
+                this.setCurrentGalaxyId({ value:newGalaxyId })
+                
+                this.save()
+                this.start()
             },
         },
         

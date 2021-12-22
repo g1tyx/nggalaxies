@@ -12,6 +12,13 @@ export const state = () => ({
 
 export const getters = {
     
+    galaxyIds:(state) => {
+        
+        let ret = []
+        state.galaxies.forEach(galaxy => { ret.push(galaxy.id) })
+        return ret
+    },
+    
     saveData:(state) => (galaxyId) => {
         
         let galaxy = state.galaxies.find(galaxy => galaxy.id === galaxyId)
