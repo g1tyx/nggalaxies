@@ -31,7 +31,6 @@ export const getters = {
                 
                 id: ship.id,
                 count: ship.count,
-                offset: ship.offset,
             })
         })
         
@@ -61,7 +60,6 @@ export const actions = {
         payload.data.forEach(loadedShip => {
             
             commit('setCount', { shipId:loadedShip.id, value:loadedShip.count || 0 })
-            commit('setOffset', { shipId:loadedShip.id, value:loadedShip.offset || 0 })
         })
     },
 }
@@ -84,22 +82,12 @@ export const mutations = {
         ship.count = payload.value
     },
     
-    setOffset(state, payload) {
-        
-        let ship = state.ships.find(ship => ship.id === payload.shipId)
-        ship.offset = payload.value
-    },
-    
     applyModifier(state, payload) {
         
         let ships = state.ships.filter(ship => payload.shipIds.includes(ship.id))
         
         if (payload.type == 'damage') ships.forEach(ship => { ship.damage.modifier *= payload.coeff })
             
-        else if (payload.type == 'count') ships.forEach(ship => {
-            
-            ship.count += payload.coeff
-            ship.offset += payload.coeff
-        })
+        else if (payload.type == 'count') ships.forEach(ship => { ship.offset += payload.coeff })
     },
 }

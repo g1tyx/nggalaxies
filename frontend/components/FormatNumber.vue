@@ -9,6 +9,8 @@ export default {
     
         format: function() {
             
+            if (this.value === Infinity) return { value:parseFloat(this.value), symbol:'' }
+            
             let num = parseFloat(Math.abs(this.value))
             if (num == 0) return { value:parseFloat(this.value), symbol:'' }
             if (num > 0 && num < 1) return { value:parseFloat(this.value).toFixed(1), symbol:'' }
@@ -112,6 +114,12 @@ export default {
                 { value: 1e285, symbol: "e285" },
                 { value: 1e288, symbol: "e288" },
                 { value: 1e291, symbol: "e291" },
+                { value: 1e294, symbol: "e294" },
+                { value: 1e297, symbol: "e297" },
+                { value: 1e300, symbol: "e300" },
+                { value: 1e303, symbol: "e303" },
+                { value: 1e306, symbol: "e306" },
+                { value: 1e309, symbol: "e309" },
             ]
     
             const rx = /\.0+$|(\.[0-9]*[1-9])0+$/

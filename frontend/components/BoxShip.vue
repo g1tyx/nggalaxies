@@ -139,7 +139,7 @@
                 let temp = 1
                 for (let n = 1; n < this.buildCount; n++)
                     temp += Math.pow(this.ship.cost.coeff, n)
-                    
+                
                 temp *= this.ship.cost.base * Math.pow(this.ship.cost.coeff, (this.ship.count - this.ship.offset))
                 temp = Math.floor(temp)
                 

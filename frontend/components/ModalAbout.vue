@@ -70,6 +70,7 @@
                                 <ul class="mb-0 text-light small">
                                     <li>NEW: defining username</li>
                                     <li>FIX: ship unlock null</li>
+                                    <li>FIX: ship cost infinity</li>
                                 </ul>
                             </div>
                         </div>

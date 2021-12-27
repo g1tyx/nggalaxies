@@ -106,19 +106,19 @@
                 this.upgradePurchasedList.forEach(upgrade => {                    
                     
                     if (upgrade.modifier.type == 'darkmatter') this.galaxyApplyModifier(upgrade.modifier)
-                    else if (upgrade.modifier.type != 'count') this.shipApplyModifier(upgrade.modifier)
+                    else this.shipApplyModifier(upgrade.modifier)
                 })
                 
                 this.boostPurchasedList.forEach(boost => {                    
                     
                     if (boost.modifier.type == 'darkmatter') this.galaxyApplyModifier(boost.modifier)
-                    else if (boost.modifier.type != 'count') this.shipApplyModifier(boost.modifier)
+                    else this.shipApplyModifier(boost.modifier)
                 })
                 
                 this.objectivePurchasedList.forEach(objective => {                    
                     
                     if (objective.modifier.type == 'darkmatter') this.galaxyApplyModifier(objective.modifier)
-                    else if (objective.modifier.type != 'count') this.shipApplyModifier(objective.modifier)
+                    else this.shipApplyModifier(objective.modifier)
                 })
 
                 this.galaxySetLoaded({ galaxyId:this.currentGalaxyId, value:true })

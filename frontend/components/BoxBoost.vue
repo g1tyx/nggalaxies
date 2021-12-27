@@ -79,7 +79,7 @@
                 this.galaxySetDarkmatterCount({ galaxyId:this.currentGalaxyId, value:this.currentGalaxyDarkmatterCount - this.boost.cost })
                 
                 if (this.boost.modifier.type == 'darkmatter') this.galaxyApplyModifier(this.boost.modifier)
-                else this.shipApplyModifier(this.boost.modifier)
+                else this.shipApplyModifier(this.boost.modifier)                
             },
         },
     }
