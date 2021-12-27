@@ -5,12 +5,16 @@
                 
                 <div class="col-auto dropend">
                 
-                    <div class="btn btn-dark p-1 d-flex align-items-center justify-content-center position-relative" style="width:50px; height:45px;" data-bs-toggle="dropdown" aria-expanded="false">                        
+                    <div v-if="!currentUnlock" class="btn btn-dark p-1 d-flex align-items-center justify-content-center position-relative" style="width:50px; height:45px;">                        
+                        <img :src="require(`~/assets/img/${ship.id}.png`)" width="24" height="24" :alt="$t('shipName_' + ship.id)" />
+                    </div>
+                    
+                    <div v-if="currentUnlock" class="btn btn-dark p-1 d-flex align-items-center justify-content-center position-relative" style="width:50px; height:45px;" data-bs-toggle="dropdown" aria-expanded="false">                        
                         <img :src="require(`~/assets/img/${ship.id}.png`)" width="24" height="24" :alt="$t('shipName_' + ship.id)" />
                         <div class="position-absolute top-0 start-0 px-1 small text-light"><i class="fas fa-fw fa-eye text-muted small"></i></div>
                     </div>
                     
-                    <div class="dropdown-menu bg-dark border-0 px-4 py-1" style="width:250px;">
+                    <div v-if="currentUnlock" class="dropdown-menu bg-dark border-0 px-4 py-1" style="width:250px;">
                         <div class="row gx-4 align-items-center">
                             
                             <div class="col-auto">

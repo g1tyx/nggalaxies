@@ -703,8 +703,6 @@
                             { Data:{ 'nggalaxies':compressed } },
                             { headers: { 'X-Authorization':this.playfabSessionTicket } }
                         )
-                        
-                        console.log(response)
                     
                     } catch(error) {
                         

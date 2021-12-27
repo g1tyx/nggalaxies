@@ -15,6 +15,30 @@
                         <div v-if="playfabSessionTicket" class="col">
                             <div class="p-1">
                                 <small class="text-success">{{ $t('loggedIn') }}</small>
+                                <span v-if="user.username">{{ user.username }}</span>
+                                <span v-if="!user.username">{{ $t('undefined') }}</span>
+                            </div>
+                        </div>
+
+                        <div v-if="playfabSessionTicket" class="col">
+                            <div class="mb-1">
+                                <input type="text" class="form-control" v-model="user.username" :placeholder="$t('user_username')" />
+                            </div>
+                            <div class="px-0">
+                                <div class="row gx-2 align-items-center">
+                                
+                                    <div class="col lh-sm">
+                                        <small v-if="userError" class="text-danger">{{ $t('error_' + userError) }}</small>
+                                        <small v-if="userSuccess" class="text-success">{{ $t('user_success') }}</small>
+                                    </div>
+                                    
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-primary" @click="onUpdate()">
+                                            {{ $t('update_btn') }}
+                                        </button>
+                                    </div>
+                                    
+                                </div>
                             </div>
                         </div>
                         
@@ -110,6 +134,10 @@
         data() {
             return {
                 
+                user: {
+                    username: null,
+                },
+                
                 login: {
                     username: null,
                     password: null,
@@ -121,6 +149,9 @@
                     confirmPassword: null,
                 },
                 
+                userError: null,
+                userSuccess: null,
+                
                 loginError: null,
                 
                 registerError: null,
@@ -131,6 +162,7 @@
         computed: {
             ...mapGetters({
                 
+                username: 'username',
                 playfabSessionTicket: 'playfabSessionTicket',
             }),
         },
@@ -138,8 +170,31 @@
         methods: {
             ...mapMutations({
                 
+                setUsername: 'setUsername',
                 setPlayfabSessionTicket: 'setPlayfabSessionTicket',
             }),
+        
+            async onUpdate() {
+                
+                this.userError = null
+                this.userSuccess = false
+                
+                try {
+                
+                    let response = await this.$axios.$post('https://48360.playfabapi.com/Client/UpdateUserData',
+                        { Data:{ 'username':this.user.username } },
+                        { headers: { 'X-Authorization':this.playfabSessionTicket } }
+                    )
+                    
+                    this.setUsername({ value:this.user.username })
+                    this.userSuccess = true
+                    
+                } catch(error) {
+                    
+                    this.userError = error.response.data.error
+                    console.log(error)
+                }
+            },
         
             async onLogin() {
                 
@@ -185,6 +240,11 @@
                     console.log(error)
                 }
             },
+        },
+        
+        created() {
+        
+            this.user.username = this.username
         },
     }
 </script>

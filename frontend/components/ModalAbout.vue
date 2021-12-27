@@ -61,18 +61,15 @@
                         
                         <div class="col">
                             <div class="p-1">
-                                <span>{{ $t('aboutModal_title1') }} - v0.2.0 - 22-12-2021</span>
+                                <span>{{ $t('aboutModal_title1') }} - v0.3.0 - 27-12-2021</span>
                             </div>
                         </div>                        
                         
                         <div class="col">
                             <div class="p-1">
                                 <ul class="mb-0 text-light small">
-                                    <li>NEW: register/login process + cloud saving</li>
-                                    <li>CHANGE: + boost count taken into account to compute ship cost</li>
-                                    <li>CHANGE: tap on Bone Hunter icon perform (total dps / 1000) per click, 1 at least</li>
-                                    <li>CHANGE: some UI changes</li>
-                                    <li>FIX: multiple unlocks at a time</li>
+                                    <li>NEW: defining username</li>
+                                    <li>FIX: ship unlock null</li>
                                 </ul>
                             </div>
                         </div>

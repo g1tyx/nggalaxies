@@ -1,5 +1,6 @@
 const initialState = {
     
+    username:null,
     currentGalaxyId:'galaxy0',    
     gameStartingDate: null,
     playfabSessionTicket: null,
@@ -15,6 +16,7 @@ export const getters = {
         
         let data = {
             
+            username: state.username,
             currentGalaxyId: state.currentGalaxyId,
             gameStartingDate: state.gameStartingDate,
             playfabSessionTicket: state.playfabSessionTicket,
@@ -22,6 +24,8 @@ export const getters = {
         
         return data
     },
+    
+    username: state => state.username,
     
     currentGalaxyId: state => state.currentGalaxyId,
     
@@ -34,6 +38,7 @@ export const actions = {
     
     load({ state, commit }, payload) {
         
+        commit('setUsername', { value:payload.data.username })
         commit('setCurrentGalaxyId', { value:payload.data.currentGalaxyId })
         commit('setGameStartingDate', { value:payload.data.gameStartingDate })
         commit('setPlayfabSessionTicket', { value:payload.data.playfabSessionTicket })
@@ -41,6 +46,11 @@ export const actions = {
 }
 
 export const mutations = {
+    
+    setUsername(state, payload) {
+        
+        state.username = payload.value
+    },
     
     setCurrentGalaxyId(state, payload) {
         

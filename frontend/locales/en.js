@@ -3,13 +3,14 @@ export default {
     'sec': 'sec',
     'tap': 'Tap',
     'time_day': 'd',
-    'loggedIn': 'You are logged in.',
+    'loggedIn': 'You are logged in as',
     'current': 'Current',
     'darkmatter': 'Darkmatter',
     'boneHunterFleet': 'Bone Hunter Fleet',
     'upgradePurchased': 'Purchased Upgrades',
     'boostPurchased': 'Purchased Boosts',
     'shipDamage': 'Ship Damage',
+    'undefined': 'Undefined',
     
     'screenLoading_text': 'Loading...',
     
@@ -72,6 +73,11 @@ export default {
     'successBar_text1': 'is free thanks to you Commander',
     'successBar_text2': 'You freed the galaxy in',
     'successBar_text3': 'If you want to start again to improve your time, please Reset',
+    
+    'user_username': 'Username',
+    'user_success': 'Data updated successfully',
+    
+    'update_btn': 'Update',
     
     'login_btn': 'Login',
     'login_text': 'By registering an account and logging in, you will enable cloud saving.',
