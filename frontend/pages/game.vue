@@ -110,8 +110,20 @@
                 </div>
                 
                 <div v-if="currentFleet" class="col-12 flex-fill py-1 px-1">
-                    <div class="h-100 row g-1 align-items-center">
+                    <div class="h-100 row g-1 align-items-center position-relative">
                     
+                        <div class="d-none col-auto position-absolute top-0 end-0">
+                            <div class="row g-1">
+                            
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#rankingModal">
+                                        <img src="~/assets/img/ranking.png" width="16" height="16" alt="Leaderboard" />
+                                    </button>                        
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
                         <div class="col-12">
                         
                             <div class="px-2">
@@ -523,6 +535,7 @@
         <ModalAbout />
         <ModalOptions />
         <ModalDonating />
+        <ModalRanking />
         
     </div>
 </template>
@@ -637,6 +650,7 @@
             ...mapMutations({
                 
                 setCurrentGalaxyId: 'setCurrentGalaxyId',
+                setPlayfabSessionTicket: 'setPlayfabSessionTicket',
                 
                 galaxyReset: 'galaxy/reset',
                 galaxyPrestige: 'galaxy/prestige',
@@ -706,6 +720,7 @@
                     
                     } catch(error) {
                         
+                        if (error.response.data.error == 'NotAuthenticated') this.setPlayfabSessionTicket({ value:null })
                         console.log(error)
                     }
                 }

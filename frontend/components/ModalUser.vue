@@ -191,7 +191,8 @@
                     
                 } catch(error) {
                     
-                    this.userError = error.response.data.error
+                    if (error.response.data.error == 'NotAuthenticated') this.setPlayfabSessionTicket({ value:null })
+                    else this.userError = error.response.data.error
                     console.log(error)
                 }
             },

@@ -136,11 +136,10 @@
             
             cost: function() {
             
-                let temp = 1
-                for (let n = 1; n < this.buildCount; n++)
-                    temp += Math.pow(this.ship.cost.coeff, n)
-                
-                temp *= this.ship.cost.base * Math.pow(this.ship.cost.coeff, (this.ship.count - this.ship.offset))
+                let temp = this.ship.cost.base * Math.pow(this.ship.cost.coeff, (this.ship.count + 1 - this.ship.offset))
+                for (let n = 2; n < this.buildCount; n++)
+                    temp += this.ship.cost.base * Math.pow(this.ship.cost.coeff, (this.ship.count + n - this.ship.offset))
+
                 temp = Math.floor(temp)
                 
                 return temp
@@ -164,8 +163,14 @@
                     }
                     else if (buildAmount == 'max') {
                         
-                        let cost = this.ship.cost.base * Math.pow(this.ship.cost.coeff, this.ship.count)
-                        temp = Math.max(1, Math.floor(Math.log(((this.currentGalaxy.creditCount * (this.ship.cost.coeff - 1)) / cost) + 1) / Math.log(this.ship.cost.coeff)))
+                        let cost = 0
+                        while (cost <= this.currentGalaxyCreditCount) {
+                        
+                            cost += this.ship.cost.base * Math.pow(this.ship.cost.coeff, (this.ship.count + temp - this.ship.offset))
+                            temp += 1
+                        }
+                        
+                        temp -= 1
                     }
                 }
                 
@@ -199,8 +204,14 @@
                     }
                     else if (buildAmount == 'max') {
                         
-                        let cost = this.ship.cost.base * Math.pow(this.ship.cost.coeff, this.ship.count)
-                        temp = Math.max(1, Math.floor(Math.log(((this.currentGalaxy.creditCount * (this.ship.cost.coeff - 1)) / cost) + 1) / Math.log(this.ship.cost.coeff)))
+                        let cost = 0
+                        while (cost <= this.currentGalaxyCreditCount) {
+                        
+                            cost += this.ship.cost.base * Math.pow(this.ship.cost.coeff, (this.ship.count + temp - this.ship.offset))
+                            temp += 1
+                        }
+                        
+                        temp -= 1
                     }
                 }
                 
