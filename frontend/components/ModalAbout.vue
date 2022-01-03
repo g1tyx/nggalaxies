@@ -61,15 +61,14 @@
                         
                         <div class="col">
                             <div class="p-1">
-                                <span>{{ $t('aboutModal_title1') }} - v0.3.1 - 27-12-2021</span>
+                                <span>{{ $t('aboutModal_title1') }} - v0.3.2 - 03-01-2022</span>
                             </div>
                         </div>                        
                         
                         <div class="col">
                             <div class="p-1">
                                 <ul class="mb-0 text-light small">
-                                    <li>FIX: session token expired</li>
-                                    <li>FIX: max build and ship cost computing</li>
+                                    <li>FIX: force reloading after a prestige to compute right values</li>
                                 </ul>
                             </div>
                         </div>

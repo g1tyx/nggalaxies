@@ -775,8 +775,6 @@
                     return
                 }
                 
-                this.rafHandle = requestAnimationFrame(this.update)
-                
                 if (this.tagOnPrestige == true) {
                 
                     this.galaxyPrestige({ galaxyId:this.currentGalaxyId, darkmatter:this.potentialDarkmatter })
@@ -792,7 +790,12 @@
                     this.tagOnPrestige = false
                     
                     this.save()
+                    
+                    window.location.href = '/'
+                    return
                 }
+                
+                this.rafHandle = requestAnimationFrame(this.update)
                 
                 this.frameDelta += timestamp - this.lastFrameTimeMs
                 if (this.frameDelta < 1000) return
