@@ -798,9 +798,12 @@
                 this.rafHandle = requestAnimationFrame(this.update)
                 
                 this.frameDelta += timestamp - this.lastFrameTimeMs
+                this.lastFrameTimeMs = timestamp
+                
                 if (this.frameDelta < 1000) return
                 
                 let shots = (this.frameDelta / 1000)
+                this.frameDelta = 0
                 
                 let damages = 0
                 this.ships.forEach(ship => {
@@ -831,9 +834,6 @@
                         this.currentFleetLife = this.currentFleet.life.current
                     }
                 }
-                
-                this.frameDelta = 0
-                this.lastFrameTimeMs = timestamp
             },
             
             onManualFire() {

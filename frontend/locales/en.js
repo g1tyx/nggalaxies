@@ -24,6 +24,7 @@ export default {
     'submenuName_options': 'Options',
     'submenuName_about': 'About',
     'submenuName_user': 'Profile',
+    'submenuName_ranking': 'Ranking',
     
     'buildAmount_+1': '+1',
     'buildAmount_+10': '+10',

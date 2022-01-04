@@ -61,14 +61,15 @@
                         
                         <div class="col">
                             <div class="p-1">
-                                <span>{{ $t('aboutModal_title1') }} - v0.3.2 - 03-01-2022</span>
+                                <span>{{ $t('aboutModal_title1') }} - v0.3.3 - 04-01-2022</span>
                             </div>
                         </div>                        
                         
                         <div class="col">
                             <div class="p-1">
                                 <ul class="mb-0 text-light small">
-                                    <li>FIX: force reloading after a prestige to compute right values</li>
+                                    <li>FIX: ship cost and count for 'max' build option</li>
+                                    <li>FIX: income computation</li>
                                 </ul>
                             </div>
                         </div>

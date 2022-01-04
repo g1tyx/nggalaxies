@@ -137,7 +137,7 @@
             cost: function() {
             
                 let temp = this.ship.cost.base * Math.pow(this.ship.cost.coeff, (this.ship.count + 1 - this.ship.offset))
-                for (let n = 2; n < this.buildCount; n++)
+                for (let n = 1; n < this.buildCount; n++)
                     temp += this.ship.cost.base * Math.pow(this.ship.cost.coeff, (this.ship.count + n - this.ship.offset))
 
                 temp = Math.floor(temp)
@@ -170,7 +170,8 @@
                             temp += 1
                         }
                         
-                        temp -= 1
+                        temp -= 2
+                        if (temp < 0) temp = 0
                     }
                 }
                 
@@ -211,7 +212,8 @@
                             temp += 1
                         }
                         
-                        temp -= 1
+                        temp -= 2
+                        if (temp < 0) temp = 0
                     }
                 }
                 
